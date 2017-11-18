@@ -74,6 +74,9 @@ def main():
 
     actions = __get_actions(files, edited_files)
 
+    if len(actions) == 0:
+        return
+
     print("Will perform:")
     for a in actions:
         print(a.description())
