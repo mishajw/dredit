@@ -129,6 +129,7 @@ def __text_to_files(text: str) -> Files:
 
 def __get_files(directories: str) -> Files:
     files = glob.iglob(os.path.join(directories, "**"), recursive=True)
+    files = [f for f in files if os.path.isfile(f)]
     return dict(enumerate(files))
 
 
