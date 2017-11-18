@@ -24,7 +24,13 @@ class Rename(Action):
         self.new_path = new_path
 
     def run(self) -> None:
-        pass
+        assert os.path.isfile(self.original_path)
+
+        new_directory_name = os.path.dirname(self.new_path)
+        if not os.path.isdir(new_directory_name):
+            os.mkdir(new_directory_name)
+
+        os.rename(self.original_path, self.new_path)
 
     def description(self) -> str:
         return f"Rename {self.original_path} -> {self.new_path}"
@@ -35,7 +41,8 @@ class Delete(Action):
         self.path = path
 
     def run(self) -> None:
-        pass
+        assert os.path.isfile(self.path), f"Can't find file {self.path}"
+        os.remove(self.path)
 
     def description(self) -> str:
         return f"Delete {self.path}"
