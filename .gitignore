@@ -1,2 +1,5 @@
 .env
+MANIFEST
 __pycache__
+dist
+
